@@ -4,5 +4,5 @@ function inject(url) {
   document.body.appendChild(script)
 }
 
-inject(chrome.extension.getURL('chart.js'))
+inject('//cdn.bootcss.com/Chart.js/2.4.0/Chart.min.js')
 inject(chrome.extension.getURL('inject.js'))

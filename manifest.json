@@ -15,7 +15,6 @@
     }
   ],
   "web_accessible_resources": [
-    "chart.js",
     "inject.js"
   ]
 }
