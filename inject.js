@@ -1,6 +1,7 @@
-function request(url) {
+function request(url, type) {
   return new Promise((resolve) => {
     const xhr = new XMLHttpRequest()
+    xhr.responseType = type
     xhr.addEventListener('load', () => {
       resolve(xhr.response)
     })
@@ -10,7 +11,7 @@ function request(url) {
 }
 
 function parseBarrages($barrages) {
-  return Array.prototype.map.call($('d', $barrages), function ($barrage) {
+  return Array.prototype.map.call($barrages.querySelectorAll('d'), ($barrage) => {
     const data = $barrage.getAttribute('p').split(',')
     return {
       mode: parseInt(data[1]),
@@ -23,9 +24,11 @@ function parseBarrages($barrages) {
 }
 
 function getLatestBarrages() {
-  return request('http://comment.bilibili.com/' + window['cid'] + '.xml').then(function ($barrages) {
-    return parseBarrages($barrages)
-  })
+  return request(
+    `http://comment.bilibili.com/${window['cid']}.xml`, 'document')
+    .then(($barrages) => {
+      return parseBarrages($barrages)
+    })
 }
 
 function getDuration() {
@@ -76,7 +79,7 @@ window.addEventListener('load', () => {
         datasets: [{
           data: distribution,
           label: '弹幕数',
-          borderColor: '#00a1d6',
+          borderColor: 'rgb(0,161,214)',
           backgroundColor: 'rgba(0,161,214,.2)'
         }]
       },
