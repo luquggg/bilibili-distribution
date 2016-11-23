@@ -1,0 +1,21 @@
+{
+  "name": "Bilibili 弹幕分布",
+  "description": "在 Bilibili 视频播放器下方显示一个弹幕分布图，用于可视化的高能预警",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": [
+        "http://www.bilibili.com/video/*",
+        "http://bangumi.bilibili.com/anime/v/*"
+      ],
+      "js": [
+        "script.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    "chart.js",
+    "inject.js"
+  ]
+}
