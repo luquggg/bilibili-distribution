@@ -55,14 +55,14 @@ window.addEventListener('load', () => {
         distribution[Math.round(barrage.startTime / groupSize)] += 1
       }
     })
-    console.log(distribution)
 
+    const width = document.querySelector('#bofqi').clientWidth
     const $canvas = document.createElement('canvas')
-    $canvas.width = 1160
+    $canvas.width = width
     $canvas.height = 100
 
     const $distribution = document.createElement('div')
-    $distribution.style.width = '1160px'
+    $distribution.style.width = width + 'px'
     $distribution.style.margin = 'auto'
     $distribution.appendChild($canvas)
     document.querySelector('.player-wrapper').appendChild($distribution)
